@@ -1,0 +1,38 @@
+name: comment-action-dashboard
+version: 0.1.0
+description: >
+  Analyzes the latest and historical comments across Bitbucket repositories, pull requests, commits, and Atlassian Jira stories to produce an engineering action dashboard with risks, blockers, owners, next steps, and leadership-ready direction.
+author: Apt Learning / Engineering Flow Intelligence
+license: internal
+capabilities:
+  - Read latest Jira story comments and summarize actionable engineering signals
+  - Read Bitbucket PR/comment threads and detect unresolved technical actions
+  - Correlate Jira stories, Bitbucket PRs, commits, builds, and deployment status
+  - Generate action dashboard rows with owner, priority, confidence, blocker, and next action
+  - Produce manager-ready direction notes for engineers
+  - Export dashboard output as Markdown, JSON, or CSV
+inputs:
+  jira:
+    base_url: ${JIRA_BASE_URL}
+    email: ${JIRA_EMAIL}
+    api_token: ${JIRA_API_TOKEN}
+    jql: ${JIRA_JQL}
+  bitbucket:
+    workspace: ${BITBUCKET_WORKSPACE}
+    username: ${BITBUCKET_USERNAME}
+    app_password: ${BITBUCKET_APP_PASSWORD}
+    repositories: ${BITBUCKET_REPOSITORIES}
+  options:
+    lookback_days: 14
+    include_closed_items: false
+    priority_model: urgency_risk_dependency
+outputs:
+  - action-dashboard.md
+  - action-dashboard.json
+  - action-dashboard.csv
+  - engineer-direction-notes.md
+entrypoints:
+  powershell:
+    - scripts/Invoke-CommentActionDashboard.ps1
+  prompt:
+    - prompts/action-dashboard-master-prompt.md
