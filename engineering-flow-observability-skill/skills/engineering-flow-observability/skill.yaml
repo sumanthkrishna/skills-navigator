@@ -1,0 +1,45 @@
+name: engineering-flow-observability
+version: 0.1.0
+description: >
+  A Copilot skill package for analyzing engineering delivery flow from Jira story
+  to commit, pull request, CI quality gates, approval, merge, and lower-environment
+  deployment through Jenkins, SonarQube, and Spinnaker-like platforms.
+capabilities:
+  - Build commit-to-deploy timelines for Jira stories, branches, pull requests, and deployments.
+  - Separate active engineering time from system wait time and human approval delay.
+  - Detect bottlenecks across PR review, CI queues, failed builds, Sonar quality gates, and deployment pipelines.
+  - Generate sprint-level engineering flow summaries for retrospectives and leadership reviews.
+  - Produce Markdown or Confluence-ready reports.
+inputs:
+  - jira_story_id
+  - repository_name
+  - branch_name
+  - pull_request_id
+  - build_id
+  - deployment_pipeline_id
+outputs:
+  - story_flow_timeline
+  - bottleneck_summary
+  - wait_state_breakdown
+  - markdown_report
+  - retro_insights
+required_environment_variables:
+  - JIRA_BASE_URL
+  - JIRA_TOKEN
+  - GITHUB_BASE_URL
+  - GITHUB_TOKEN
+  - BITBUCKET_BASE_URL
+  - BITBUCKET_TOKEN
+  - JENKINS_BASE_URL
+  - JENKINS_TOKEN
+  - SONAR_BASE_URL
+  - SONAR_TOKEN
+  - SPINNAKER_BASE_URL
+  - SPINNAKER_TOKEN
+  - CONFLUENCE_BASE_URL
+  - CONFLUENCE_TOKEN
+safety_and_usage_notes:
+  - Do not use this skill to rank individual engineers.
+  - Use the output to identify delivery-system friction, process delay, tooling bottlenecks, and platform instability.
+  - Avoid collecting unnecessary personal data.
+  - Prefer team-level and sprint-level reporting.
