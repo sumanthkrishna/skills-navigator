@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-04-27T08:00:00-04:00",
+  "dashboard": [
+    {
+      "priority": "P1",
+      "source": "Jira",
+      "item_id": "PAY-1421",
+      "title": "Add retry logic for failed payments",
+      "latest_signal": "API response schema is still unclear",
+      "action_required": "Confirm API contract and update acceptance criteria",
+      "owner": "API Owner + Story Assignee",
+      "due": "Today",
+      "status": "Blocked",
+      "confidence": "High"
+    }
+  ]
+}
